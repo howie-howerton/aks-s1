@@ -1,0 +1,32 @@
+# THE FOLLOWING VARIABLES MUST BE CUSTOMIZED FOR YOUR AZURE ENVIRONMENT!!!
+client_id     = ""
+client_secret = ""
+
+# THE FOLLOWING S1-RELATED VARIABLES MUST BE CUSTOMIZED FOR YOUR S1 DEPLOYMENT!!!
+s1_site_key     = ""
+docker_password = ""                    # This is your GitHub Personal Access Token
+
+
+# The following Azure/AKS-related variables can be left as is or be customized as you see fit.
+resource_group_name = "aks-s1-rg"
+location            = "eastus"
+cluster_name        = "aks-s1-demo"
+dns_prefix          = "aks-s1-demo"
+agent_count         = "2"               # The number of worker nodes to allocate for the AKS cluster
+kubernetes_version  = "1.18.2"
+vm_size             = "Standard_D2s_v3"       # https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general
+nodepool_name       = "nodepool"
+
+
+# The following S1-related variables can be left as is or be customized as you see fit.
+# Check for latest versions here!!!:  https://support.sentinelone.com/hc/en-us/articles/115004361149-Latest-Information
+k8s_secret_for_s1_github_access_token = "s1-github-access"
+service_account_name                  = "sentinelone"
+s1_helper_image_repository            = "docker.pkg.github.com/s1-agents/cwpp_agent/s1helper"
+s1_helper_image_tag                   = "ga-4.2.2" 
+s1_agent_image_repository             = "docker.pkg.github.com/s1-agents/cwpp_agent/s1agent"
+s1_agent_image_tag                    = "ga-4.2.2" 
+s1_namespace                          = "s1"
+docker_server                         = "docker.pkg.github.com"
+docker_username                       = "whatever"                  # This can be any value (recommended to leave as "whatever")
+helm_release_name                     = "s1-helm"

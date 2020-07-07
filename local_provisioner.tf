@@ -13,7 +13,7 @@ resource "null_resource" "local_mac_provisioner" {
     command = <<EOT
         echo ""
         echo "################################################################################"
-        echo "# Running local provisioner"
+        echo "# Running local provisioner to set KUBECONFIG"
         echo "################################################################################"
         echo ""
         export KUBECONFIG=./azurek8s

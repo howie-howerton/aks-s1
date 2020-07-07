@@ -32,6 +32,9 @@ provider "kubernetes" {
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
+  tags = {
+    Environment = "aks-s1-demo"
+  }
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
@@ -40,16 +43,16 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   dns_prefix          = var.dns_prefix
   resource_group_name = azurerm_resource_group.rg.name
   kubernetes_version  = var.kubernetes_version
-  linux_profile {
-    admin_username = "ubuntu"
-    ssh_key {
-      key_data = file(var.ssh_public_key)
-    }
-  }
+  #   linux_profile {
+  #     admin_username = "ubuntu"
+  #     ssh_key {
+  #       key_data = file(var.ssh_public_key)
+  #     }
+  #   }
   default_node_pool {
-    name       = "nodepool"
+    name       = var.nodepool_name
     node_count = var.agent_count
-    vm_size    = "Standard_D2s_v3" #"Standard_DS1_v2"
+    vm_size    = var.vm_size
   }
   service_principal {
     client_id     = var.client_id
@@ -59,6 +62,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     Environment = "aks-s1-demo"
   }
 }
+
 # NEED TO CREATE A NAMESPACE AND A SECRET FOR S1 BEFORE RUNNING THE HELM PROVISIONER
 resource "kubernetes_namespace" "s1" {
   metadata {
@@ -87,7 +91,7 @@ resource "kubernetes_secret" "s1" {
   data = {
     ".dockerconfigjson" = jsonencode(local.dockerconfigjson)
   }
-  type = "kubernetes.io/dockerconfigjson"
+  type       = "kubernetes.io/dockerconfigjson"
   depends_on = [kubernetes_namespace.s1, azurerm_kubernetes_cluster.cluster]
 }
 

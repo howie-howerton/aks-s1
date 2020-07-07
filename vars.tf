@@ -34,15 +34,24 @@ variable "kubernetes_version" {
   default     = "1.18.2"
 }
 
-variable "admin_username" {
-  description = "The name of the admin user for each K8s worker node.  Used with SSH logins."
-  default     = "ubuntu"
+# variable "admin_username" {
+#   description = "The name of the admin user for each K8s worker node.  Used with SSH logins."
+#   default     = "ubuntu"
+# }
+
+variable "vm_size" {
+  description = "Azure VM size to use for the K8s worker nodes."
+  default     = "Standard_D2s_v3"
 }
 
-variable "ssh_public_key" {
-  description = "Path to the SSH public key to be used to log into the worker nodes (if necessary).."
+variable "nodepool_name" {
+  description = "The name to be used for the AKS cluster's nodepool."
+  default     = "nodepool"
 }
 
+# variable "ssh_public_key" {
+#   description = "Path to the SSH public key to be used to log into the worker nodes (if necessary).."
+# }
 
 variable "k8s_secret_for_s1_github_access_token" {
   description = "This is the NAME of the K8s secret that stores your GitHub token (that is used to authenticate to the S1 GitHub packages repository (where the s1-agent and s1-helper Docker images are stored.))"
@@ -95,10 +104,6 @@ variable "docker_username" {
 
 variable "docker_password" {
   description = "GitHub access token to access the GitHub package/image repository (where the s1-agent and s1-helper images live)."
-}
-
-variable "docker_email" {
-  description = "Need more info as to why this is necessary.  It seems to be the email you use for Git when accessing GitHub." # ToDo:  Investigate why/if this is needed.
 }
 
 variable "helm_release_name" {
