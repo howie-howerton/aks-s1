@@ -29,6 +29,16 @@ variable "agent_count" {
   default     = "2"
 }
 
+variable "kubernetes_version" {
+  description = "The version of Kuberentes to use."
+  default     = "1.18.2"
+}
+
+variable "admin_username" {
+  description = "The name of the admin user for each K8s worker node.  Used with SSH logins."
+  default     = "ubuntu"
+}
+
 variable "ssh_public_key" {
   description = "Path to the SSH public key to be used to log into the worker nodes (if necessary).."
 }
