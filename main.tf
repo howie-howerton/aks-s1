@@ -78,15 +78,15 @@ resource "kubernetes_namespace" "s1" {
 }
 
 locals {
-    dockerconfigjson = {
-        "auths" = {
-            (var.docker_server) = {
-                username = var.docker_username
-                password = var.docker_password
-                auth     = base64encode(join(":",[var.docker_username, var.docker_password]))
-            }
-        }
+  dockerconfigjson = {
+    "auths" = {
+      (var.docker_server) = {
+        username = var.docker_username
+        password = var.docker_password
+        auth     = base64encode(join(":", [var.docker_username, var.docker_password]))
+      }
     }
+  }
 }
 
 resource "kubernetes_secret" "s1" {
