@@ -45,14 +45,8 @@ az ad sp create-for-rbac \
   --role="Contributor" \
   --scopes="/subscriptions/SUBSCRIPTION_ID"
 ```
-4. Make a note of the values for appId and password. You need those to set up Terraform (in your terraform.tfvars file).
-Note: appID == client_id and password == 
+4. Make a note of the values for appId and password. You need those to set up Terraform (in your terraform.tfvars file.  NOTE: appID == client_id and password == client_secret)
 
-5. Export the following environment variables:
-```
-export ARM_CLIENT_ID=<insert the appId from above>
-export ARM_CLIENT_SECRET=<insert the password from above>
-```
 
 # Usage
 1. Clone this repository
