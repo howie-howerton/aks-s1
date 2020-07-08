@@ -22,6 +22,7 @@ The template has a local-exec provisioner that will take care of setting the KUB
 - azure CLI (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 - kubectl v1.16+ (https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - (optional) helm 3.0+ (https://helm.sh/docs/intro/install/)
+
 On a MBP, you can easily install all of these pre-requisites with:
 ```
 brew update && brew install git terraform azurecli kubectl helm

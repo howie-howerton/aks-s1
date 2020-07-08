@@ -1,9 +1,10 @@
 # THE FOLLOWING VARIABLES MUST BE CUSTOMIZED FOR YOUR AZURE ENVIRONMENT!!!
-client_id     = ""
-client_secret = ""
+# NOTE:  Refer to the README.md for how to generate a Service Principal (to obtain these values)
+client_id     = ""      # your 'appID' from the az ad sp... command
+client_secret = ""      # your 'password' from the az ad sp... command
 
 # THE FOLLOWING S1-RELATED VARIABLES MUST BE CUSTOMIZED FOR YOUR S1 DEPLOYMENT!!!
-s1_site_key     = ""
+s1_site_key     = ""                    # Get this value from your S1 Management Console
 docker_password = ""                    # This is your GitHub Personal Access Token
 
 
@@ -19,7 +20,7 @@ nodepool_name       = "nodepool"
 
 
 # The following S1-related variables can be left as is or be customized as you see fit.
-# Check for latest versions here!!!:  https://support.sentinelone.com/hc/en-us/articles/115004361149-Latest-Information
+# You can check for latest agent versions here!!!:  https://support.sentinelone.com/hc/en-us/articles/115004361149-Latest-Information
 k8s_secret_for_s1_github_access_token = "s1-github-access"
 service_account_name                  = "sentinelone"
 s1_helper_image_repository            = "docker.pkg.github.com/s1-agents/cwpp_agent/s1helper"
