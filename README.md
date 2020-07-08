@@ -41,15 +41,16 @@ az account list
 3. Create a new Service Principal with Contributor permissions for terraform with (Replacing "SUBSCRIPTION_ID below with your account ID you noted from the above command):
 ```
 az ad sp create-for-rbac \
+  -n "http://aks-s1-terraform"
   --role="Contributor" \
   --scopes="/subscriptions/SUBSCRIPTION_ID"
 ```
-4. Make a note of the appId, password and tenant. You need those to set up Terraform.
+4. Make a note of the values for appId and password. You need those to set up Terraform (in your terraform.tfvars file).
+Note: appID == client_id and password == 
+
 5. Export the following environment variables:
 ```
 export ARM_CLIENT_ID=<insert the appId from above>
-export ARM_SUBSCRIPTION_ID=<insert your subscription id>
-export ARM_TENANT_ID=<insert the tenant from above>
 export ARM_CLIENT_SECRET=<insert the password from above>
 ```
 
